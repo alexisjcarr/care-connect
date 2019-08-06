@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "npm install pm2 -g",
+    "start": "pm2-runtime index.js -i max",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -16,5 +20,18 @@
   "bugs": {
     "url": "https://github.com/alexisjcarr/care-connect/issues"
   },
-  "homepage": "https://github.com/alexisjcarr/care-connect#readme"
+  "homepage": "https://github.com/alexisjcarr/care-connect#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.20.0",
+    "knex": "^0.19.1",
+    "pm2": "^3.5.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "nodemon": "^1.19.1",
+    "sqlite3": "^4.0.9"
+  }
 }
